@@ -7,7 +7,6 @@ public class BuildExercise {
     //String filename = "";
     int max_num;
     Random random = new Random();
-
     public void setMax_num(int max_num) {
         this.max_num = max_num;
     }

@@ -1,21 +1,7 @@
 import java.util.Stack;
 
-
-/**
- * 计算器
- */
 public class Calculator {
-
-    /**
-     * 符号栈：用于存储运算符和括号
-     */
     private Stack<Character> symbolStack = null;
-
-    /**
-     * 解析并计算四则运算表达式(含括号)，返回计算结果
-     *
-     * @param numStr 算术表达式(含括号)
-     */
     public String calculate(String numStr) {
         numStr = removeStrSpace(numStr); // 去除空格
         // 如果算术表达式尾部没有‘=’号，则在尾部添加‘=’，表示结束符
