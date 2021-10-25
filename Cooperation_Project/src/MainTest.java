@@ -17,6 +17,7 @@ public class MainTest {
 		ArrayList<Integer> rightRecord = new ArrayList<Integer>();
 		ArrayList<Integer> wrongRecord = new ArrayList<Integer>();
 		BuildExercise ce = new BuildExercise();
+		SavaTotxt save = new SavaTotxt();
 		ce.setMax_num(max_num);
 		for (int i = 1; i <= problems_num; i++) {
 			String problem = ce.create();
@@ -48,6 +49,14 @@ public class MainTest {
 				result = cal.getFinalResult(result);
 				System.out.println("T" + i + ":  " + problem + "=" + result);
 				rightAnswerMap.put(i, result);
+				if (!save.WriteToFile("T" + i + ":  " + problem + "=", 0)) {
+					System.out.println("写入Exercise文件失败！");
+					System.exit(0);
+				}
+				if (!save.WriteToFile("T" + i + ":  " + problem + "=" + result, 1)) {
+					System.out.println("写入Answer文件失败！");
+					System.exit(0);
+				}
 			} else {
 				i--;
 			}
@@ -86,6 +95,9 @@ public class MainTest {
 			} else
 				System.out.println("Wrong:" + wrongRecord.size());
 		}
-
+		if (save.CloseOutBufferedWriter())
+			System.out.println("题目和答案文件创建成功！");
+		else
+			System.out.println("题目和答案文件创建失败！");
 	}
 }
